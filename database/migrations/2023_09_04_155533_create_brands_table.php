@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->integer('is_featured')->default(0)->comment('0 is normal 1 for featured');
+            $table->integer('status')->default(0)->comment('0 is Inactive 1 for Active');
             $table->timestamps();
         });
     }

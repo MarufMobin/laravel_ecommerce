@@ -7,3 +7,5 @@
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="{{ asset('Backend/css/bracket.css') }}">
     
+    <!-- Custom Css Linking are here  -->
+    <link rel="stylesheet" href="{{ asset('Backend/css/custom.css') }}">

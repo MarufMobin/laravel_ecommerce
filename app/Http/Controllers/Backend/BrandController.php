@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Backend\Brand;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+// After done by Intervention Image Work
+use Image;
+use File;
 
 class BrandController extends Controller
 {
@@ -15,7 +19,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands = Brand::orderBy('name', 'asc' )->get();
+        return view('backend.pages.brand.manage', compact('brands'));
     }
 
     /**
@@ -25,7 +30,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.brand.create');
     }
 
     /**
@@ -36,7 +41,29 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+        ],[
+            'name.required' => 'please insert the brand name',
+        ]);
+
+        $brand = new Brand();
+        $brand->name = $request->name;
+        $brand->slug = Str::slug($request->name);
+        $brand->description = $request->description;
+        $brand->is_featured = $request->featured;
+        $brand->status = $request->status;
+
+        if( $request->image ){
+            $image = $request->file('image');
+            $img = rand() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('Backend/img/brand/'. $img );
+            Image::make($image)->save($location);
+        }
+        $brand->image = $img;
+
+        $brand->save();
+        return redirect()->route('brand.manage');
     }
 
     /**
