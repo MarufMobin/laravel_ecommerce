@@ -11,9 +11,7 @@
 
     @include('backend.includes.menu')
     @include('backend.includes.topbar')
-    @include('backend.includes.rightmenu')
-
-  
+    @include('backend.includes.rightmenu')  
 
     <!-- ########## START: MAIN PANEL ########## -->
     <div class="br-mainpanel">
@@ -22,7 +20,7 @@
 
       @include('backend.includes.footer')
 
-    </div><!-- br-mainpanel -->
+    </div>
     <!-- ########## END: MAIN PANEL ########## -->
    
     @include('backend.includes.script')
