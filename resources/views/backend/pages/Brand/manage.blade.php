@@ -81,9 +81,40 @@
                                                         <a href="{{ route('brand.edit', $brand->id) }}" class="fa fa-edit"></a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{ route('brand.destroy', $brand->id) }}" class="fa fa-trash"></a>
+                                                        <a href="" class="fa fa-trash" data-toggle="modal" data-target="#deleteBrand{{ $brand->id }}" ></a>
                                                     </li>
                                                 </ul>
+                                                <!-- Delete Modal Start Here -->
+                                                <div class="modal fade" id="deleteBrand{{ $brand->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                                Do you want to Delete the brand ?
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="{{ route('brand.destroy', $brand->id ) }}" method="post">
+                                                                @csrf 
+                                                                <div class="action-icons">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <input type="submit" name="delete" value="Delete" class="btn btn-danger">
+                                                                        </li>
+                                                                        <li>
+                                                                            <button type="button" class="btn btn-primary"  data-dismiss="modal">Close</button>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                <!-- Delete Modal End Here -->
                                             </div>
                                         </td>
                                     </tr>

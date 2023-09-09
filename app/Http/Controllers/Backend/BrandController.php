@@ -127,7 +127,7 @@ class BrandController extends Controller
             $location = public_path('Backend/img/brand/'. $img );
             Image::make($image)->save($location);
         }
-        $brand->image = $img;
+        // $brand->image = $img;
 
         $brand->save();
         return redirect()->route('brand.manage');
@@ -141,6 +141,17 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $brand = Brand::find($id);
+
+        if( !is_null( $brand ) ){
+            // Delete if there is any existing image
+            if( File::exists('Backend/img/brand/'. $brand->image) ){
+                File::delete('Backend/img/brand/'. $brand->image);
+            }
+            $brand->delete();
+            return redirect()->route('brand.manage');
+        }else{
+            return redirect()->route('brand.manage');
+        }
     }
 }
