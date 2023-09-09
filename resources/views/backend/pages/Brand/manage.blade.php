@@ -41,7 +41,13 @@
                                 @foreach( $brands as $brand)
                                     <tr>
                                         <th scope="row">{{ $i }}</th>
-                                        <td>{{ $brand->name }}</td>
+                                        <td>
+                                            @if( !is_null($brand->image) )
+                                                <img src="{{ asset('Backend/img/brand') }}/{{$brand->image}}" alt="" width="50px" height="50px"> 
+                                            @else
+                                                <span>No Thumbnail</span>
+                                            @endif
+                                        </td>
                                         <td>{{ $brand->name }}</td>
                                         <td>{{ $brand->slug }}</td>
                                         <td>{{ $brand->description }}</td>
@@ -72,10 +78,10 @@
                                             <div class="action-icons"> 
                                                 <ul>
                                                     <li>
-                                                        <a href="" class="fa fa-edit"></a>
+                                                        <a href="{{ route('brand.edit', $brand->id) }}" class="fa fa-edit"></a>
                                                     </li>
                                                     <li>
-                                                        <a href="" class="fa fa-trash"></a>
+                                                        <a href="{{ route('brand.destroy', $brand->id) }}" class="fa fa-trash"></a>
                                                     </li>
                                                 </ul>
                                             </div>

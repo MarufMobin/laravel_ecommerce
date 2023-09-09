@@ -40,7 +40,7 @@
                                 <select name="featured" id="" class="form-control">
                                     <option value="0">Please Select the Featured Status</option>
                                     <option value="1">Yes, Featured</option>
-                                    <option value="0">Active, Featured</option>
+                                    <option value="0">Not, Featured</option>
                                 </select>
                             </div>
                             

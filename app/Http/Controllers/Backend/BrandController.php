@@ -85,7 +85,13 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
+        $brand = Brand::find($id);
+
+        if( !is_null($brand) ){
+            return view('backend.pages.brand.edit', compact('brand'));
+        }else{
+            return redirect()->route('brand.manage');
+        }
     }
 
     /**
@@ -97,7 +103,34 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+        ],[
+            'name.required' => 'please insert the brand name',
+        ]);
+
+        $brand = Brand::find( $id );
+        $brand->name = $request->name;
+        $brand->slug = Str::slug($request->name);
+        $brand->description = $request->description;
+        $brand->is_featured = $request->featured;
+        $brand->status = $request->status;
+
+        if( !is_null( $request->image ) ){
+
+            // Delete if there is any existing image
+            if( File::exists('Backend/img/brand/'. $brand->image) ){
+                File::delete('Backend/img/brand/'. $brand->image);
+            }
+            $image = $request->file('image');
+            $img = rand() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('Backend/img/brand/'. $img );
+            Image::make($image)->save($location);
+        }
+        $brand->image = $img;
+
+        $brand->save();
+        return redirect()->route('brand.manage');
     }
 
     /**
