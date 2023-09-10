@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Backend\Brand;
+use App\Models\Backend\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 // After done by Intervention Image Work
 use Image;
 use File;
 
-class BrandController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +19,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::orderBy('name', 'asc' )->get();
-        return view('backend.pages.brand.manage', compact('brands'));
+        $categories =  Category::orderBy('name', 'asc')->get();
+        return view('backend.pages.category.manage', compact('categories'));
     }
 
     /**
@@ -30,7 +30,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.brand.create');
+        return view('backend.pages.category.create');
     }
 
     /**
@@ -44,26 +44,26 @@ class BrandController extends Controller
         $request->validate([
             'name' => 'required|max:255',
         ],[
-            'name.required' => 'please insert the brand name',
+            'name.required' => 'please insert the Category name',
         ]);
 
-        $brand = new Brand();
-        $brand->name = $request->name;
-        $brand->slug = Str::slug($request->name);
-        $brand->description = $request->description;
-        $brand->is_featured = $request->featured;
-        $brand->status = $request->status;
+        $category = new Category();
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        $category->description = $request->description;
+        $category->is_parent = $request->parent;
+        $category->status = $request->status;
 
         if( $request->image ){
             $image = $request->file('image');
             $img = rand() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('Backend/img/brand/'. $img );
+            $location = public_path('Backend/img/category/'. $img );
             Image::make($image)->save($location);
         }
-        $brand->image = $img;
+        $category->image = $img;
 
-        $brand->save();
-        return redirect()->route('brand.manage');
+        $category->save();
+        return redirect()->route('category.manage');
     }
 
     /**
@@ -74,7 +74,7 @@ class BrandController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -85,12 +85,12 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        $brand = Brand::find($id);
+        $category = Category::find( $id );
 
-        if( !is_null($brand) ){
-            return view('backend.pages.brand.edit', compact('brand'));
+        if( !is_null( $category ) ){
+            return view('backend.pages.category.edit', compact('category'));
         }else{
-            return redirect()->route('brand.manage');
+            return redirect()->route('category.manage');
         }
     }
 
@@ -106,31 +106,30 @@ class BrandController extends Controller
         $request->validate([
             'name' => 'required|max:255',
         ],[
-            'name.required' => 'please insert the brand name',
+            'name.required' => 'please insert the category name',
         ]);
 
-        $brand = Brand::find( $id );
-        $brand->name = $request->name;
-        $brand->slug = Str::slug($request->name);
-        $brand->description = $request->description;
-        $brand->is_featured = $request->featured;
-        $brand->status = $request->status;
+        $category = Category::find( $id );
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        $category->description = $request->description;
+        $category->is_parent = $request->is_parent;
+        $category->status = $request->status;
 
         if( !is_null( $request->image ) ){
 
             // Delete if there is any existing image
-            if( File::exists('Backend/img/brand/'. $brand->image) ){
-                File::delete('Backend/img/brand/'. $brand->image);
+            if( File::exists('Backend/img/category/'. $category->image) ){
+                File::delete('Backend/img/category/'. $category->image);
             }
             $image = $request->file('image');
             $img = rand() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('Backend/img/brand/'. $img );
+            $location = public_path('Backend/img/category/'. $img );
             Image::make($image)->save($location);
-            $brand->image = $img;
+            $category->image = $img;
         }
-
-        $brand->save();
-        return redirect()->route('brand.manage');
+        $category->save();
+        return redirect()->route('category.manage');
     }
 
     /**
@@ -141,17 +140,17 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        $brand = Brand::find($id);
+        $category = Category::find($id);
 
-        if( !is_null( $brand ) ){
+        if( !is_null( $category ) ){
             // Delete if there is any existing image
-            if( File::exists('Backend/img/brand/'. $brand->image) ){
-                File::delete('Backend/img/brand/'. $brand->image);
+            if( File::exists('Backend/img/category/'. $category->image) ){
+                File::delete('Backend/img/category/'. $category->image);
             }
-            $brand->delete();
-            return redirect()->route('brand.manage');
+            $category->delete();
+            return redirect()->route('category.manage');
         }else{
-            return redirect()->route('brand.manage');
+            return redirect()->route('category.manage');
         }
     }
 }
