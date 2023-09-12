@@ -59,8 +59,8 @@ class BrandController extends Controller
             $img = rand() . '.' . $image->getClientOriginalExtension();
             $location = public_path('Backend/img/brand/'. $img );
             Image::make($image)->save($location);
+            $brand->image = $img;
         }
-        $brand->image = $img;
 
         $brand->save();
         return redirect()->route('brand.manage');

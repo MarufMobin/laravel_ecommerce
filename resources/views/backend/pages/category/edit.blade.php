@@ -37,8 +37,18 @@
 
                             <div class="form-group">
                                 <label for="is_parent">Is Parent</label>
-                                <select name="is_parent" id="" class="form-control">
-                                    <option value="0">Please Select the Featured Status</option>
+                                <select name="parent" id="" class="form-control">
+                                    <option value="0">Please Select the Parent Category if any</option>
+                                    @foreach( App\Models\Backend\Category::orderBy('name', 'asc')->where('is_parent', 0)->get() as $parentcat )
+                                        <option value="{{$parentcat->id}}" @if( $category->id == $parentcat->id ) selected @endif >{{ $parentcat->name }}</option>
+
+                                        @foreach( App\Models\Backend\Category::orderBy('name', 'asc')->where('is_parent', $parentcat ->id )->get() as $childcat )
+
+                                            <option value="{{$childcat->id}}" @if(  $category->id == $childcat->id  ) selected @endif  > - {{ $childcat->name }}</option>
+
+                                        @endforeach
+
+                                    @endforeach
                                 </select>
                             </div>
                             

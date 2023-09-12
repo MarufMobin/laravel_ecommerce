@@ -19,7 +19,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories =  Category::orderBy('name', 'asc')->get();
+        $categories =  Category::orderBy('name', 'asc')->where('is_parent',0)->get();
         return view('backend.pages.category.manage', compact('categories'));
     }
 
@@ -59,8 +59,8 @@ class CategoryController extends Controller
             $img = rand() . '.' . $image->getClientOriginalExtension();
             $location = public_path('Backend/img/category/'. $img );
             Image::make($image)->save($location);
+            $category->image = $img;
         }
-        $category->image = $img;
 
         $category->save();
         return redirect()->route('category.manage');
