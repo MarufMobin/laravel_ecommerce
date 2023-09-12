@@ -15,7 +15,7 @@
           <a href="#" class="br-menu-link with-sub">
             <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
             <span class="menu-item-label">
-              Brands 
+              All Brands 
             </span>
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
@@ -23,6 +23,7 @@
             <li class="sub-item"><a href="{{ route('brand.manage') }}" class="sub-link">Manage all brand</a></li>
           </ul>
         </li>
+
         <!-- Category Menu are here -->
         <li class="br-menu-item">
           <a href="#" class="br-menu-link with-sub">
@@ -34,6 +35,20 @@
           <ul class="br-menu-sub">
             <li class="sub-item"><a href="{{ route('category.create') }}" class="sub-link">Add new Category</a></li>
             <li class="sub-item"><a href="{{ route('category.manage') }}" class="sub-link">Manage all Categories</a></li>
+          </ul>
+        </li>
+        
+        <!-- Product Menu are here -->
+        <li class="br-menu-item">
+          <a href="#" class="br-menu-link with-sub">
+            <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+            <span class="menu-item-label">
+              Products Listing
+            </span>
+          </a><!-- br-menu-link -->
+          <ul class="br-menu-sub">
+            <li class="sub-item"><a href="{{ route('product.create') }}" class="sub-link">Add new Product</a></li>
+            <li class="sub-item"><a href="{{ route('product.manage') }}" class="sub-link">Manage all Products</a></li>
           </ul>
         </li>
 
