@@ -26,45 +26,49 @@
                         <table class="table border table-bordered table-striped rounded">
                             <thead>
                                 <tr>
-                                <th scope="col">#Sl.</th>
-                                <th scope="col">Image</th>
-                                <th scope="col">Name</th>
-                                <!-- <th scope="col">Slug</th>
-                                <th scope="col">Description</th> -->
-                                <th scope="col">Category / Sub-Category</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
+                                    <th scope="col">#Sl.</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Quentity</th>
+                                    <th scope="col">Regular Price</th>
+                                    <th scope="col">Offer Price</th>
+                                    <th scope="col">Featured</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php $i = 1; @endphp
-                                @foreach( $categories as $category )
+                                @foreach( $products as $product ) 
                                     <tr>
                                         <th scope="row">{{ $i }}</th>
+                                        <td>{{ $product->title }}</td>
                                         <td>
-                                            @if( !is_null($category->image) )
-                                                <img src="{{ asset('Backend/img/category') }}/{{$category->image}}" alt="" width="50px" height="50px"> 
+                                            @if( !is_null($product->image) )
+                                                <img src="{{ asset('Backend/img/product') }}/{{$product->image}}" alt="" width="50px" height="50px"> 
                                             @else
                                                 <span>No Thumbnail</span>
                                             @endif
                                         </td>
-                                        <td>{{ $category->name }}</td>
-                                        <!-- <td>{{ $category->slug }}</td>
-                                        <td>{{ $category->description }}</td> -->
+                                        <td>{{ $product->category_id }}</td>
+                                        <td>{{ $product->quantity }}</td>
+                                        <td>{{ $product->reqular_price }}</td>
+                                        <td>{{ $product->offer_price }}</td>
                                         <td>
-                                            @if( $category->is_parent == 0 )
+                                            @if( $product->featured_item == 1 )
                                                 <span class="badge badge-success"> 
-                                                    Primary Category
+                                                    Yes
                                                 </span>
                                             @else
                                                 <span class="badge badge-warning"> 
-                                                    {{ $category->parent->name }}
+                                                    No
                                                 </span>
                                             @endif
                                         </td>
                                         
                                         <td>
-                                            @if( $category->status == 1 )
+                                            @if( $product->status == 1 )
                                                 <span class="badge badge-success"> 
                                                     Active
                                                 </span>
@@ -78,26 +82,26 @@
                                             <div class="action-icons"> 
                                                 <ul>
                                                     <li>
-                                                        <a href="{{ route('category.edit', $category->id) }}" class="fa fa-edit"></a>
+                                                        <a href="{{ route('product.edit', $product->id) }}" class="fa fa-edit"></a>
                                                     </li>
                                                     <li>
-                                                        <a href="" class="fa fa-trash" data-toggle="modal" data-target="#deleteCategory{{ $category->id }}" ></a>
+                                                        <a href="" class="fa fa-trash" data-toggle="modal" data-target="#deleteProduct{{ $product->id }}" ></a>
                                                     </li>
                                                 </ul>
                                                 <!-- Delete Modal Start Here -->
-                                                <div class="modal fade" id="deleteCategory{{ $category->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="deleteProduct{{ $product->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">
-                                                                    Do you want to Delete the Category ?
+                                                                    Do you want to Delete the Product ?
                                                                 </h5>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="{{ route('category.destroy', $category->id ) }}" method="post">
+                                                                <form action="{{ route('product.destroy', $product->id ) }}" method="post">
                                                                     @csrf 
                                                                     <div class="action-icons">
                                                                         <ul>
@@ -119,13 +123,13 @@
                                         </td>
                                     </tr>
 
-                                    <!-- Sub Category start are here -->
-                                    @foreach( App\Models\Backend\Category::orderBy('name', 'asc')->where('is_parent', $category->id )->get() as $subcat )
+                                    <!-- Sub product start are here -->
+                                    @foreach( App\Models\Backend\product::orderBy('name', 'asc')->where('is_parent', $product->id )->get() as $subcat )
                                         <tr>
                                             <th scope="row">{{ ++$i }}</th>
                                             <td>
                                                 @if( !is_null($subcat->image) )
-                                                    <img src="{{ asset('Backend/img/category') }}/{{$subcat->image}}" alt="" width="50px" height="50px"> 
+                                                    <img src="{{ asset('Backend/img/product') }}/{{$subcat->image}}" alt="" width="50px" height="50px"> 
                                                 @else
                                                     <span>No Thumbnail</span>
                                                 @endif
@@ -136,7 +140,7 @@
                                             <td>
                                                 @if( $subcat->is_parent == 0 )
                                                     <span class="badge badge-success"> 
-                                                        Primary Category
+                                                        Primary Product
                                                     </span>
                                                 @else
                                                     <span class="badge badge-warning"> 
@@ -160,26 +164,26 @@
                                                 <div class="action-icons"> 
                                                     <ul>
                                                         <li>
-                                                            <a href="{{ route('category.edit', $subcat->id) }}" class="fa fa-edit"></a>
+                                                            <a href="{{ route('product.edit', $subcat->id) }}" class="fa fa-edit"></a>
                                                         </li>
                                                         <li>
-                                                            <a href="" class="fa fa-trash" data-toggle="modal" data-target="#deleteCategory{{ $subcat->id }}" ></a>
+                                                            <a href="" class="fa fa-trash" data-toggle="modal" data-target="#deleteProduct{{ $subcat->id }}" ></a>
                                                         </li>
                                                     </ul>
                                                     <!-- Delete Modal Start Here -->
-                                                    <div class="modal fade" id="deleteCategory{{ $subcat->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="deleteProduct{{ $subcat->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">
-                                                                    Do you want to Delete the Sub Category ?
+                                                                    Do you want to Delete the Sub Product ?
                                                                 </h5>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="{{ route('category.destroy', $subcat->id ) }}" method="post">
+                                                                <form action="{{ route('product.destroy', $subcat->id ) }}" method="post">
                                                                     @csrf 
                                                                     <div class="action-icons">
                                                                         <ul>

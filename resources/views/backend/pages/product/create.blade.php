@@ -29,19 +29,7 @@
                                 <label for="title">Product Title</label>
                                 <input type="text" name="title" class="form-control">
                             </div>
-                                <!-- 
-                                $table->string('tages')->nullable();
-                                $table->unSignedInteger('quentity')->default(1);
-                                $table->integer('regular_price')->default(0);
-                                $table->integer('offer_price')->nullable();
-                                $table->string('sku_code')->nullable();
-                                $table->integer('product_type')->default(0)->comment('0 for new 1 for old');
-                                $table->integer('category_id');
-                                $table->integer('brand_id');
-                                $table->integer('featured_item')->default(0)->comment('0 for normarl 1 for Featured');
-                                $table->integer('status')->default(0)->comment('0 for inactive 1 for active');
-                                $table->string('image')->nullable();
-                                 -->
+                            
                             <div class="form-group">
                                 <label for="description">Product Description</label>
                                 <textarea class="form-control" name="description" id="" rows="5"></textarea>
