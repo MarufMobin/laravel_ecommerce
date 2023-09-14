@@ -59,7 +59,7 @@
                                     <div class="col-sm-12 col-xl-4">
                                         <div class="form-group">
                                             <label for="featured">Featured Product?</label>
-                                            <select name="featured" id="" class="form-control">
+                                            <select name="is_featured" id="" class="form-control">
                                                 <option value="0">Please Select the Featured Status</option>
                                                 <option value="1">Yes, Featured</option>
                                                 <option value="0">Not, Featured</option>
@@ -68,22 +68,26 @@
                                         
                                         <div class="form-group">
                                             <label for="brand">Product Brand</label>
-                                            <select name="brand" id="" class="form-control">
+                                            <select name="brand_id" id="" class="form-control">
                                                 <option value="0">Please Select the Product Brand</option>
-
-                                                <option value="1">Brand Name</option>
-
+                                                @foreach( App\Models\Backend\Brand::orderBy('name', 'asc')->get() as $brand )
+                                                    <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="category">Product Category</label>
-                                            <select name="category" id="" class="form-control">
-                                                <option value="0">Please Select the Product Category</option>
-                                               
-                                                <option value="1">Category Name</option>
-
-                                                
+                                            <select name="category_id" id="" class="form-control">
+                                                <option value="0">Please Select the Product Category / Sub Category </option>
+                                                    @foreach( App\Models\Backend\Category::orderBy('name', 'asc')->where('is_parent', 0 )->get() as $parent_cat )
+                                                        <option value="{{ $parent_cat->id }}">{{ $parent_cat->name }}</option>
+                                                        
+                                                        @foreach( App\Models\Backend\Category::orderBy('name', 'asc')->where('is_parent', $parent_cat->id )->get() as $child_cat )
+                                                            <option value="{{ $child_cat->id }}">  -- {{ $child_cat->name }}</option>
+                                                        @endforeach
+                                                        
+                                                    @endforeach
                                             </select>
                                         </div>
 
@@ -113,8 +117,8 @@
                                     <div class="col-sm-12 col-xl-4">
                                     
                                         <div class="form-group">
-                                            <label for="short_desc">Product Short Description</label>
-                                            <textarea class="form-control" name="short_desc" id="" rows="5"></textarea>
+                                            <label for="sort_desc">Product Short Description</label>
+                                            <textarea class="form-control" name="sort_desc" id="" rows="5"></textarea>
                                         </div>
                                         
                                         <div class="form-group">
@@ -123,8 +127,8 @@
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label for="tags">Tags</label>
-                                            <input type="text" name="tags" class="form-control">
+                                            <label for="tages">Tags</label>
+                                            <input type="text" name="tages" class="form-control">
                                         </div>
                                        
                                     </div>

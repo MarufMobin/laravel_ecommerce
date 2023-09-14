@@ -29,8 +29,9 @@
                                     <th scope="col">#Sl.</th>
                                     <th scope="col">Title</th>
                                     <th scope="col">Image</th>
+                                    <th scope="col">Brand</th>
                                     <th scope="col">Category</th>
-                                    <th scope="col">Quentity</th>
+                                    <th scope="col">Quentity / Sub Category</th>
                                     <th scope="col">Regular Price</th>
                                     <th scope="col">Offer Price</th>
                                     <th scope="col">Featured</th>
@@ -51,10 +52,11 @@
                                                 <span>No Thumbnail</span>
                                             @endif
                                         </td>
-                                        <td>{{ $product->category_id }}</td>
-                                        <td>{{ $product->quantity }}</td>
-                                        <td>{{ $product->reqular_price }}</td>
-                                        <td>{{ $product->offer_price }}</td>
+                                        <td>{{ $product->brand->name }}</td>
+                                        <td>{{ $product->category->name }}</td>
+                                        <td>{{ $product->quentity }} PCS </td>
+                                        <td>{{ $product->regular_price }} BDT</td>
+                                        <td>{{ $product->offer_price }} BDT</td>
                                         <td>
                                             @if( $product->featured_item == 1 )
                                                 <span class="badge badge-success"> 
@@ -122,89 +124,6 @@
                                             </div>
                                         </td>
                                     </tr>
-
-                                    <!-- Sub product start are here -->
-                                    @foreach( App\Models\Backend\product::orderBy('name', 'asc')->where('is_parent', $product->id )->get() as $subcat )
-                                        <tr>
-                                            <th scope="row">{{ ++$i }}</th>
-                                            <td>
-                                                @if( !is_null($subcat->image) )
-                                                    <img src="{{ asset('Backend/img/product') }}/{{$subcat->image}}" alt="" width="50px" height="50px"> 
-                                                @else
-                                                    <span>No Thumbnail</span>
-                                                @endif
-                                            </td>
-                                            <td> - {{ $subcat->name }}</td>
-                                            <!-- <td>{{ $subcat->slug }}</td>
-                                            <td>{{ $subcat->description }}</td> -->
-                                            <td>
-                                                @if( $subcat->is_parent == 0 )
-                                                    <span class="badge badge-success"> 
-                                                        Primary Product
-                                                    </span>
-                                                @else
-                                                    <span class="badge badge-warning"> 
-                                                        {{ $subcat->parent->name }}
-                                                    </span>
-                                                @endif
-                                            </td>
-                                            
-                                            <td>
-                                                @if( $subcat->status == 1 )
-                                                    <span class="badge badge-success"> 
-                                                        Active
-                                                    </span>
-                                                @else
-                                                    <span class="badge badge-danger"> 
-                                                        Inactive
-                                                    </span>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <div class="action-icons"> 
-                                                    <ul>
-                                                        <li>
-                                                            <a href="{{ route('product.edit', $subcat->id) }}" class="fa fa-edit"></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="" class="fa fa-trash" data-toggle="modal" data-target="#deleteProduct{{ $subcat->id }}" ></a>
-                                                        </li>
-                                                    </ul>
-                                                    <!-- Delete Modal Start Here -->
-                                                    <div class="modal fade" id="deleteProduct{{ $subcat->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">
-                                                                    Do you want to Delete the Sub Product ?
-                                                                </h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form action="{{ route('product.destroy', $subcat->id ) }}" method="post">
-                                                                    @csrf 
-                                                                    <div class="action-icons">
-                                                                        <ul>
-                                                                            <li>
-                                                                                <input type="submit" name="delete" value="Delete" class="btn btn-danger">
-                                                                            </li>
-                                                                            <li>
-                                                                                <button type="button" class="btn btn-primary"  data-dismiss="modal">Close</button>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                    <!-- Delete Modal End Here -->
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
                                 @php $i++; @endphp
                                 @endforeach
                             </tbody>
