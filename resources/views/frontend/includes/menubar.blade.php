@@ -95,8 +95,18 @@
           <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
             <div class="nav-outer">
               <ul class="nav navbar-nav">
-                <li class="active dropdown yamm-fw"> <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Home</a> </li>
-                <li class="dropdown yamm mega-menu"> <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Clothing</a>
+                <li class="active dropdown yamm-fw"> 
+                  <a href="{{ route('homepage') }}" >
+                    Home
+                  </a>
+                 </li>
+                <li class="dropdown yamm-fw">
+                   <a href="{{ route('allProducts') }}" >
+                    All Products
+                  </a> 
+                </li>
+                <li class="dropdown yamm mega-menu"> 
+                  <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Clothing</a>
                   <ul class="dropdown-menu container">
                     <li>
                       <div class="yamm-content ">
@@ -246,37 +256,9 @@
                 <li class="dropdown hidden-sm"> <a href="category.html">Watches</a> </li>
                 <li class="dropdown"> <a href="contact.html">Jewellery</a> </li>
                 <li class="dropdown"> <a href="contact.html">Shoes</a> </li>
-                <li class="dropdown"> <a href="contact.html">Kids & Girls</a> </li>
-                <li class="dropdown"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Pages</a>
-                  <ul class="dropdown-menu pages">
-                    <li>
-                      <div class="yamm-content">
-                        <div class="row">
-                          <div class="col-xs-12 col-menu">
-                            <ul class="links">
-                              <li><a href="home.html">Home</a></li>
-                              <li><a href="category.html">Category</a></li>
-                              <li><a href="detail.html">Detail</a></li>
-                              <li><a href="shopping-cart.html">Shopping Cart Summary</a></li>
-                              <li><a href="checkout.html">Checkout</a></li>
-                              <li><a href="blog.html">Blog</a></li>
-                              <li><a href="blog-details.html">Blog Detail</a></li>
-                              <li><a href="contact.html">Contact</a></li>
-                              <li><a href="sign-in.html">Sign In</a></li>
-                              <li><a href="my-wishlist.html">Wishlist</a></li>
-                              <li><a href="terms-conditions.html">Terms and Condition</a></li>
-                              <li><a href="track-orders.html">Track Orders</a></li>
-                              <li><a href="product-comparison.html">Product-Comparison</a></li>
-                              <li><a href="faq.html">FAQ</a></li>
-                              <li><a href="404.html">404</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
+                <li class="dropdown  navbar-right special-menu"> 
+                  <a href="#">Todays offer</a> 
                 </li>
-                <li class="dropdown  navbar-right special-menu"> <a href="#">Todays offer</a> </li>
               </ul>
               <!-- /.navbar-nav -->
               <div class="clearfix"></div>

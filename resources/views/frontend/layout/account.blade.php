@@ -12,8 +12,7 @@
 
         <div class="body-content outer-top-xs" id="top-banner-and-menu">
                 <div class="container">
-                    <div class="row single-product"> 
-                        @include('frontend.includes.sitebar')
+                    <div class="row"> 
                         @yield('container')
                     </div>
                 </div>

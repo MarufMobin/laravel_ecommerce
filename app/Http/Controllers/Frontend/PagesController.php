@@ -8,13 +8,52 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display The Home Page 
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         return view('frontend.pages.home');
+    }
+    
+    /**
+     * Display All Products
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function products()
+    {
+        return view('frontend.pages.products.products');
+    }
+    
+    /**
+     * Display Single Product are here
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function details()
+    {
+        return view('frontend.pages.products.details');
+    }
+
+    /**
+     * Display login
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function login()
+    {
+        return view('frontend.pages.login');
+    }
+    /**
+     * Display Registration
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function registration()
+    {
+        return view('frontend.pages.registration');
     }
 
     /**
