@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Backend\Slider;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
+// After done by Intervention Image Work
+use Image;
+use File;
+ 
 class PagesController extends Controller
 {
     /**
@@ -14,7 +19,8 @@ class PagesController extends Controller
      */
     public function index()
     {
-        return view('frontend.pages.home');
+        $sliders = Slider::orderBy('id', 'asc')->get();
+        return view('frontend.pages.home', compact('sliders'));
     }
     
     /**

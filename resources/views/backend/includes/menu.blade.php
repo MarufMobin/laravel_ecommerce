@@ -97,7 +97,27 @@
           </ul>
         </li>
 
+        <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Website Content</label>
+
+        <!-- Slider Work are here -->
+        <li class="br-menu-item">
+          <a href="#" class="br-menu-link with-sub @if( Route::currentRouteNamed('slider.manage') || Route::currentRouteNamed('slider.create') || Route::currentRouteNamed('slider.edit') ) active @endif ">
+            <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+            <span class="menu-item-label">
+            Home Slider
+            </span>
+          </a>
+          <ul class="br-menu-sub">
+            <li class="sub-item">
+              <a href="{{ route('slider.create') }}" class="sub-link @if( Route::currentRouteNamed('slider.create')  ) active @endif ">Add new Slider</a>
+            </li>
+            <li class="sub-item">
+              <a href="{{ route('slider.manage') }}" class="sub-link @if( Route::currentRouteNamed('slider.manage')  ) active @endif ">Manage all Slider</a>
+            </li>
+          </ul>
+        </li>
+
       </ul>
       <br>
-    </div><!-- br-sideleft -->
+    </div>
     <!-- ########## END: LEFT PANEL ########## -->
