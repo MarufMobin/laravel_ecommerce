@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Backend\Slider;
 use Illuminate\Http\Request;
+use App\Models\Backend\Slider;
+use App\Models\Backend\Brand;
+use App\Models\Backend\Category;
+use App\Models\Backend\Product;
 use Illuminate\Support\Str;
 // After done by Intervention Image Work
 use Image;
@@ -20,11 +23,12 @@ class PagesController extends Controller
     public function index()
     {
         $sliders = Slider::orderBy('id', 'asc')->get();
-        return view('frontend.pages.home', compact('sliders'));
+        $newArrivals = Product::orderBy('id', 'desc')->get();
+        return view('frontend.pages.home', compact('sliders', 'newArrivals'));
     }
     
     /**
-     * Display All Products
+     * Display All Products Page redirect
      *
      * @return \Illuminate\Http\Response
      */
@@ -38,30 +42,38 @@ class PagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function details()
+    public function productshow($slug)
+    {
+        $value = Product::where('slug', $slug )->first();
+
+        if( !is_null( $value ) ){
+            return view('frontend.pages.products.details', compact('value'));
+        }else{
+            return back();
+        }
+    }
+    
+    /**
+     * Category Wise Product are here
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function productcategory()
+    {
+        return view('frontend.pages.products.details');
+    }
+   
+    /**
+     * Single category Product show
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function categoryshow($slug) 
     {
         return view('frontend.pages.products.details');
     }
 
-    /**
-     * Display login
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function login()
-    {
-        return view('frontend.pages.login');
-    }
-    /**
-     * Display Registration
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function registration()
-    {
-        return view('frontend.pages.registration');
-    }
-
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -84,14 +96,14 @@ class PagesController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     *  Single Product Details View
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return view('frontend.pages.products.details');
     }
 
     /**

@@ -14,10 +14,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', 'App\Http\Controllers\Frontend\PagesController@index')->name('homepage');
-Route::get('/products', 'App\Http\Controllers\Frontend\PagesController@products')->name('allProducts');
-Route::get('/products/details', 'App\Http\Controllers\Frontend\PagesController@details')->name('details');
+
+Route::group( ['prefix' => 'product'], function(){
+    Route::get('/', 'App\Http\Controllers\Frontend\PagesController@products')->name('allProducts');
+    Route::get('/{slug}', 'App\Http\Controllers\Frontend\PagesController@productshow')->name('product.show');
+    
+    // Category Wise Product filtering 
+    Route::get('/category', 'App\Http\Controllers\Frontend\PagesController@categoryproduct')->name('product.category');
+    Route::get('/category/{slug}', 'App\Http\Controllers\Frontend\PagesController@categoryshow')->name('category.show');
+});
+
 Route::get('/login', 'App\Http\Controllers\Frontend\PagesController@login')->name('login');
 Route::get('/registration', 'App\Http\Controllers\Frontend\PagesController@registration')->name('ragistration');
 

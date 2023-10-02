@@ -158,13 +158,13 @@ class ProductController extends Controller
 
         if( !is_null( $product ) ){
             // Delete if there is any existing image
-            if( File::exists('Backend/img/$product/'. $product->image) ){
-                File::delete('Backend/img/$product/'. $product->image);
+            if( File::exists('Backend/img/product/'. $product->image) ){
+                File::delete('Backend/img/product/'. $product->image);
             }
             $product->delete();
-            return redirect()->route('$product.manage');
+            return redirect()->route('product.manage');
         }else{
-            return redirect()->route('$product.manage');
+            return redirect()->route('product.manage');
         }
     }
 }
