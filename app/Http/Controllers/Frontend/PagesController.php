@@ -24,7 +24,8 @@ class PagesController extends Controller
     {
         $sliders = Slider::orderBy('id', 'asc')->get();
         $newArrivals = Product::orderBy('id', 'desc')->get();
-        return view('frontend.pages.home', compact('sliders', 'newArrivals'));
+        $featuredItems = Product::orderBy('id', 'desc')->where('featured_item', 1 )->get();
+        return view('frontend.pages.home', compact('sliders', 'newArrivals', 'featuredItems'));
     }
     
     /**
@@ -34,7 +35,8 @@ class PagesController extends Controller
      */
     public function products()
     {
-        return view('frontend.pages.products.products');
+        $products = Product::orderBy('id', 'desc')->paginate(24);
+        return view('frontend.pages.products.products', compact('products'));
     }
     
     /**

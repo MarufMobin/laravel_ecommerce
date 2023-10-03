@@ -247,7 +247,7 @@
                             <div class="col-sm-2">
                                 <div class="cart-quantity">
                                     <div class="quant-input">
-                                        <input type="number" value="1" />
+                                        <input type="number" value="1" min="1"/>
                                     </div>
                                 </div>
                             </div>
