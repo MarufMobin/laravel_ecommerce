@@ -72,7 +72,13 @@ class PagesController extends Controller
      */
     public function categoryshow($slug) 
     {
-        return view('frontend.pages.products.details');
+        $category = Category::where('slug', $slug )->first();
+
+        if( !is_null( $category ) ){
+            return view('frontend.pages.products.category', compact('category'));
+        }else{
+            return redirect()->route('homepage');
+        }
     }
 
    

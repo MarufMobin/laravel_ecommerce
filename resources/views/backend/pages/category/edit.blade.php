@@ -37,10 +37,10 @@
 
                             <div class="form-group">
                                 <label for="is_parent">Is Parent</label>
-                                <select name="parent" id="" class="form-control">
+                                <select name="is_parent" id="" class="form-control">
                                     <option value="0">Please Select the Parent Category if any</option>
                                     @foreach( App\Models\Backend\Category::orderBy('name', 'asc')->where('is_parent', 0)->get() as $parentcat )
-                                        <option value="{{$parentcat->id}}" @if( $category->id == $parentcat->id ) selected @endif >{{ $parentcat->name }}</option>
+                                        <option value="0" @if( $category->id == $parentcat->id ) selected @endif >{{ $parentcat->name }}</option>
 
                                         @foreach( App\Models\Backend\Category::orderBy('name', 'asc')->where('is_parent', $parentcat ->id )->get() as $childcat )
 

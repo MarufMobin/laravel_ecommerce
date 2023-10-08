@@ -201,570 +201,87 @@
         <!-- List Container Start  -->
         <div class="tab-pane " id="list-container">
           <div class="category-product">
-            <div class="category-product-inner wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
-              <div class="products">
-                <div class="product-list product">
-                  <div class="row product-list-row">
-                    <div class="col col-sm-4 col-lg-4">
-                      <div class="product-image">
-                        <div class="image"> <img src="{{ asset('frontend\assets\images\products\p3.jpg') }}" alt=""> </div>
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col col-sm-8 col-lg-8">
-                      <div class="product-info">
-                        <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small rateit"><button id="rateit-reset-14" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-14" style="display: none;"></button><div id="rateit-range-14" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-14" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;"><div class="rateit-selected" style="height: 14px; width: 56px;"></div><div class="rateit-hover" style="height:14px"></div></div></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
-                        <!-- /.product-price -->
-                        <div class="description m-t-10">Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget, lacinia id purus. Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget.</div>
-                        <div class="cart clearfix animate-effect">
-                          <div class="action">
-                            <ul class="list-unstyled">
-                              <li class="add-cart-button btn-group">
-                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                              </li>
-                              <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                              <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
-                            </ul>
+            @foreach( $products as $value )
+              <div class="category-product-inner wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                <div class="products">
+                  <div class="product-list product">
+                    
+                    <div class="row product-list-row">
+                      <div class="col col-sm-4 col-lg-4">
+                        <div class="product-image">
+                          <div class="image"> 
+                            <a href="{{ route('product.show', $value->slug ) }}">
+                              @if( !is_null( $value->image ) )
+                                <img src="{{ asset('Backend/img/product/'. $value->image ) }}" alt="" />
+                                @else
+                                <img src="{{ asset('Backend/img/product/default.png') }}" alt="" />
+                              @endif
+                            </a> 
                           </div>
-                          <!-- /.action --> 
                         </div>
-                        <!-- /.cart --> 
-                        
+                        <!-- /.product-image --> 
                       </div>
-                      <!-- /.product-info --> 
-                    </div>
-                    <!-- /.col --> 
-                  </div>
-                  <!-- /.product-list-row -->
-                  <div class="tag new"><span>new</span></div>
-                </div>
-                <!-- /.product-list --> 
-              </div>
-              <!-- /.products --> 
-            </div>
-            <!-- /.category-product-inner -->
-            
-            <div class="category-product-inner wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
-              <div class="products">
-                <div class="product-list product">
-                  <div class="row product-list-row">
-                    <div class="col col-sm-4 col-lg-4">
-                      <div class="product-image">
-                        <div class="image"> <img src="{{ asset('frontend\assets\images\products\p4.jpg') }}" alt=""> </div>
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col col-sm-8 col-lg-8">
-                      <div class="product-info">
-                        <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small rateit"><button id="rateit-reset-15" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-15" style="display: none;"></button><div id="rateit-range-15" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-15" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;"><div class="rateit-selected" style="height: 14px; width: 56px;"></div><div class="rateit-hover" style="height:14px"></div></div></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
-                        <!-- /.product-price -->
-                        <div class="description m-t-10">Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget, lacinia id purus. Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget.</div>
-                        <div class="cart clearfix animate-effect">
-                          <div class="action">
-                            <ul class="list-unstyled">
-                              <li class="add-cart-button btn-group">
-                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                              </li>
-                              <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                              <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
-                            </ul>
+                      <!-- /.col -->
+                      <div class="col col-sm-8 col-lg-8">
+                        <div class="product-info">
+                          <h3 class="name">
+                            <a href="{{ route('product.show', $value->slug ) }}">{{ $value->title }}</a>
+                          </h3>
+                          <div class="rating rateit-small rateit"><button id="rateit-reset-14" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-14" style="display: none;"></button><div id="rateit-range-14" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-14" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;"><div class="rateit-selected" style="height: 14px; width: 56px;"></div><div class="rateit-hover" style="height:14px"></div></div></div>
+                          <div class="product-price">
+                              @if( !is_null( $value->offer_price ) )
+                                <span class="price"> 
+                                    ৳ {{ $value->offer_price }} 
+                                </span>
+                                <span class="price-before-discount">
+                                    ৳ {{ $value->regular_price }}
+                                </span>
+                              @else
+                                  <span class="price"> 
+                                      ৳ {{ $value->regular_price }} 
+                                  </span>
+                              @endif
+                            </div>
+                          <!-- /.product-price -->
+                          <div class="description m-t-10">{{ $value->sort_desc }}</div>
+                          <div class="cart clearfix animate-effect">
+                            <div class="action">
+                              <ul class="list-unstyled">
+                                <li class="add-cart-button btn-group">
+                                  <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
+                                  <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                </li>
+                                <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                              </ul>
+                            </div>
+                            <!-- /.action --> 
                           </div>
-                          <!-- /.action --> 
+                          <!-- /.cart --> 
+                          
                         </div>
-                        <!-- /.cart --> 
-                        
+                        <!-- /.product-info --> 
                       </div>
-                      <!-- /.product-info --> 
+                      <!-- /.col --> 
                     </div>
-                    <!-- /.col --> 
+                    
+                    
+                    @if( $value->featured_item == 1 )
+                      <div class="tag sale"><span>Sale</span></div>
+                      @else 
+                      @if( $value->product_type == 0 )
+                        <div class="tag new"><span>new</span></div>
+                      @elseif( $value->product_type == 1 )
+                        <div class="tag hot"><span>Old</span></div>
+                      @endif 
+                    @endif
+
                   </div>
-                  <!-- /.product-list-row -->
-                  <div class="tag sale"><span>sale</span></div>
+                  <!-- /.product-list --> 
                 </div>
-                <!-- /.product-list --> 
+                <!-- /.products --> 
               </div>
-              <!-- /.products --> 
-            </div>
-            <!-- /.category-product-inner -->
-            
-            <div class="category-product-inner wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
-              <div class="products">
-                <div class="product-list product">
-                  <div class="row product-list-row">
-                    <div class="col col-sm-4 col-lg-4">
-                      <div class="product-image">
-                        <div class="image"> <img src="{{ asset('frontend\assets\images\products\p5.jpg') }}" alt=""> </div>
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col col-sm-8 col-lg-8">
-                      <div class="product-info">
-                        <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small rateit"><button id="rateit-reset-16" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-16" style="display: none;"></button><div id="rateit-range-16" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-16" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;"><div class="rateit-selected" style="height: 14px; width: 56px;"></div><div class="rateit-hover" style="height:14px"></div></div></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
-                        <!-- /.product-price -->
-                        <div class="description m-t-10">Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget, lacinia id purus. Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget.</div>
-                        <div class="cart clearfix animate-effect">
-                          <div class="action">
-                            <ul class="list-unstyled">
-                              <li class="add-cart-button btn-group">
-                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                              </li>
-                              <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                              <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
-                            </ul>
-                          </div>
-                          <!-- /.action --> 
-                        </div>
-                        <!-- /.cart --> 
-                        
-                      </div>
-                      <!-- /.product-info --> 
-                    </div>
-                    <!-- /.col --> 
-                  </div>
-                  <!-- /.product-list-row -->
-                  <div class="tag hot"><span>hot</span></div>
-                </div>
-                <!-- /.product-list --> 
-              </div>
-              <!-- /.products --> 
-            </div>
-            <!-- /.category-product-inner -->
-            
-            <div class="category-product-inner wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
-              <div class="products">
-                <div class="product-list product">
-                  <div class="row product-list-row">
-                    <div class="col col-sm-4 col-lg-4">
-                      <div class="product-image">
-                        <div class="image"> <img src="{{ asset('frontend\assets\images\products\p6.jpg') }}" alt=""> </div>
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col col-sm-8 col-lg-8">
-                      <div class="product-info">
-                        <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small rateit"><button id="rateit-reset-17" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-17" style="display: none;"></button><div id="rateit-range-17" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-17" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;"><div class="rateit-selected" style="height: 14px; width: 56px;"></div><div class="rateit-hover" style="height:14px"></div></div></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
-                        <!-- /.product-price -->
-                        <div class="description m-t-10">Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget, lacinia id purus. Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget.</div>
-                        <div class="cart clearfix animate-effect">
-                          <div class="action">
-                            <ul class="list-unstyled">
-                              <li class="add-cart-button btn-group">
-                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                              </li>
-                              <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                              <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
-                            </ul>
-                          </div>
-                          <!-- /.action --> 
-                        </div>
-                        <!-- /.cart --> 
-                        
-                      </div>
-                      <!-- /.product-info --> 
-                    </div>
-                    <!-- /.col --> 
-                  </div>
-                  <!-- /.product-list-row -->
-                  <div class="tag hot"><span>hot</span></div>
-                </div>
-                <!-- /.product-list --> 
-              </div>
-              <!-- /.products --> 
-            </div>
-            <!-- /.category-product-inner -->
-            
-            <div class="category-product-inner wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
-              <div class="products">
-                <div class="product-list product">
-                  <div class="row product-list-row">
-                    <div class="col col-sm-4 col-lg-4">
-                      <div class="product-image">
-                        <div class="image"> <img src="{{ asset('frontend\assets\images\products\p7.jpg') }}" alt=""> </div>
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col col-sm-8 col-lg-8">
-                      <div class="product-info">
-                        <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small rateit"><button id="rateit-reset-18" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-18" style="display: none;"></button><div id="rateit-range-18" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-18" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;"><div class="rateit-selected" style="height: 14px; width: 56px;"></div><div class="rateit-hover" style="height:14px"></div></div></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
-                        <!-- /.product-price -->
-                        <div class="description m-t-10">Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget, lacinia id purus. Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget.</div>
-                        <div class="cart clearfix animate-effect">
-                          <div class="action">
-                            <ul class="list-unstyled">
-                              <li class="add-cart-button btn-group">
-                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                              </li>
-                              <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                              <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
-                            </ul>
-                          </div>
-                          <!-- /.action --> 
-                        </div>
-                        <!-- /.cart --> 
-                        
-                      </div>
-                      <!-- /.product-info --> 
-                    </div>
-                    <!-- /.col --> 
-                  </div>
-                  <!-- /.product-list-row -->
-                  <div class="tag sale"><span>sale</span></div>
-                </div>
-                <!-- /.product-list --> 
-              </div>
-              <!-- /.products --> 
-            </div>
-            <!-- /.category-product-inner -->
-            
-            <div class="category-product-inner wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
-              <div class="products">
-                <div class="product-list product">
-                  <div class="row product-list-row">
-                    <div class="col col-sm-4 col-lg-4">
-                      <div class="product-image">
-                        <div class="image"> <img src="{{ asset('frontend\assets\images\products\p8.jpg') }}" alt=""> </div>
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col col-sm-8 col-lg-8">
-                      <div class="product-info">
-                        <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small rateit"><button id="rateit-reset-19" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-19" style="display: none;"></button><div id="rateit-range-19" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-19" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;"><div class="rateit-selected" style="height: 14px; width: 56px;"></div><div class="rateit-hover" style="height:14px"></div></div></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
-                        <!-- /.product-price -->
-                        <div class="description m-t-10">Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget, lacinia id purus. Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget.</div>
-                        <div class="cart clearfix animate-effect">
-                          <div class="action">
-                            <ul class="list-unstyled">
-                              <li class="add-cart-button btn-group">
-                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                              </li>
-                              <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                              <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
-                            </ul>
-                          </div>
-                          <!-- /.action --> 
-                        </div>
-                        <!-- /.cart --> 
-                        
-                      </div>
-                      <!-- /.product-info --> 
-                    </div>
-                    <!-- /.col --> 
-                  </div>
-                  <!-- /.product-list-row -->
-                  <div class="tag new"><span>new</span></div>
-                </div>
-                <!-- /.product-list --> 
-              </div>
-              <!-- /.products --> 
-            </div>
-            <!-- /.category-product-inner -->
-            
-            <div class="category-product-inner wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
-              <div class="products">
-                <div class="product-list product">
-                  <div class="row product-list-row">
-                    <div class="col col-sm-4 col-lg-4">
-                      <div class="product-image">
-                        <div class="image"> <img src="{{ asset('frontend\assets\images\products\p9.jpg') }}" alt=""> </div>
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col col-sm-8 col-lg-8">
-                      <div class="product-info">
-                        <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small rateit"><button id="rateit-reset-20" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-20" style="display: none;"></button><div id="rateit-range-20" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-20" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;"><div class="rateit-selected" style="height: 14px; width: 56px;"></div><div class="rateit-hover" style="height:14px"></div></div></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
-                        <!-- /.product-price -->
-                        <div class="description m-t-10">Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget, lacinia id purus. Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget.</div>
-                        <div class="cart clearfix animate-effect">
-                          <div class="action">
-                            <ul class="list-unstyled">
-                              <li class="add-cart-button btn-group">
-                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                              </li>
-                              <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                              <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
-                            </ul>
-                          </div>
-                          <!-- /.action --> 
-                        </div>
-                        <!-- /.cart --> 
-                        
-                      </div>
-                      <!-- /.product-info --> 
-                    </div>
-                    <!-- /.col --> 
-                  </div>
-                  <!-- /.product-list-row -->
-                  <div class="tag new"><span>new</span></div>
-                </div>
-                <!-- /.product-list --> 
-              </div>
-              <!-- /.products --> 
-            </div>
-            <!-- /.category-product-inner -->
-            
-            <div class="category-product-inner wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
-              <div class="products">
-                <div class="product-list product">
-                  <div class="row product-list-row">
-                    <div class="col col-sm-4 col-lg-4">
-                      <div class="product-image">
-                        <div class="image"> <img src="{{ asset('frontend\assets\images\products\p10.jpg') }}" alt=""> </div>
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col col-sm-8 col-lg-8">
-                      <div class="product-info">
-                        <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small rateit"><button id="rateit-reset-21" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-21" style="display: none;"></button><div id="rateit-range-21" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-21" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;"><div class="rateit-selected" style="height: 14px; width: 56px;"></div><div class="rateit-hover" style="height:14px"></div></div></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
-                        <!-- /.product-price -->
-                        <div class="description m-t-10">Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget, lacinia id purus. Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget.</div>
-                        <div class="cart clearfix animate-effect">
-                          <div class="action">
-                            <ul class="list-unstyled">
-                              <li class="add-cart-button btn-group">
-                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                              </li>
-                              <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                              <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
-                            </ul>
-                          </div>
-                          <!-- /.action --> 
-                        </div>
-                        <!-- /.cart --> 
-                        
-                      </div>
-                      <!-- /.product-info --> 
-                    </div>
-                    <!-- /.col --> 
-                  </div>
-                  <!-- /.product-list-row -->
-                  <div class="tag sale"><span>sale</span></div>
-                </div>
-                <!-- /.product-list --> 
-              </div>
-              <!-- /.products --> 
-            </div>
-            <!-- /.category-product-inner -->
-            
-            <div class="category-product-inner wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
-              <div class="products">
-                <div class="product-list product">
-                  <div class="row product-list-row">
-                    <div class="col col-sm-4 col-lg-4">
-                      <div class="product-image">
-                        <div class="image"> <img src="{{ asset('frontend\assets\images\products\p11.jpg') }}" alt=""> </div>
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col col-sm-8 col-lg-8">
-                      <div class="product-info">
-                        <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small rateit"><button id="rateit-reset-22" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-22" style="display: none;"></button><div id="rateit-range-22" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-22" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;"><div class="rateit-selected" style="height: 14px; width: 56px;"></div><div class="rateit-hover" style="height:14px"></div></div></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
-                        <!-- /.product-price -->
-                        <div class="description m-t-10">Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget, lacinia id purus. Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget.</div>
-                        <div class="cart clearfix animate-effect">
-                          <div class="action">
-                            <ul class="list-unstyled">
-                              <li class="add-cart-button btn-group">
-                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                              </li>
-                              <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                              <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
-                            </ul>
-                          </div>
-                          <!-- /.action --> 
-                        </div>
-                        <!-- /.cart --> 
-                        
-                      </div>
-                      <!-- /.product-info --> 
-                    </div>
-                    <!-- /.col --> 
-                  </div>
-                  <!-- /.product-list-row -->
-                  <div class="tag hot"><span>hot</span></div>
-                </div>
-                <!-- /.product-list --> 
-              </div>
-              <!-- /.products --> 
-            </div>
-            <!-- /.category-product-inner -->
-            
-            <div class="category-product-inner wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
-              <div class="products">
-                <div class="product-list product">
-                  <div class="row product-list-row">
-                    <div class="col col-sm-4 col-lg-4">
-                      <div class="product-image">
-                        <div class="image"> <img src="{{ asset('frontend\assets\images\products\p12.jpg') }}" alt=""> </div>
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col col-sm-8 col-lg-8">
-                      <div class="product-info">
-                        <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small rateit"><button id="rateit-reset-23" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-23" style="display: none;"></button><div id="rateit-range-23" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-23" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;"><div class="rateit-selected" style="height: 14px; width: 56px;"></div><div class="rateit-hover" style="height:14px"></div></div></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
-                        <!-- /.product-price -->
-                        <div class="description m-t-10">Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget, lacinia id purus. Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget.</div>
-                        <div class="cart clearfix animate-effect">
-                          <div class="action">
-                            <ul class="list-unstyled">
-                              <li class="add-cart-button btn-group">
-                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                              </li>
-                              <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                              <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
-                            </ul>
-                          </div>
-                          <!-- /.action --> 
-                        </div>
-                        <!-- /.cart --> 
-                        
-                      </div>
-                      <!-- /.product-info --> 
-                    </div>
-                    <!-- /.col --> 
-                  </div>
-                  <!-- /.product-list-row -->
-                  <div class="tag new"><span>new</span></div>
-                </div>
-                <!-- /.product-list --> 
-              </div>
-              <!-- /.products --> 
-            </div>
-            <!-- /.category-product-inner -->
-            
-            <div class="category-product-inner wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
-              <div class="products">
-                <div class="product-list product">
-                  <div class="row product-list-row">
-                    <div class="col col-sm-4 col-lg-4">
-                      <div class="product-image">
-                        <div class="image"> <img src="{{ asset('frontend\assets\images\products\p13.jpg') }}" alt=""> </div>
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col col-sm-8 col-lg-8">
-                      <div class="product-info">
-                        <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small rateit"><button id="rateit-reset-24" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-24" style="display: none;"></button><div id="rateit-range-24" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-24" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;"><div class="rateit-selected" style="height: 14px; width: 56px;"></div><div class="rateit-hover" style="height:14px"></div></div></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
-                        <!-- /.product-price -->
-                        <div class="description m-t-10">Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget, lacinia id purus. Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget.</div>
-                        <div class="cart clearfix animate-effect">
-                          <div class="action">
-                            <ul class="list-unstyled">
-                              <li class="add-cart-button btn-group">
-                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                              </li>
-                              <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                              <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
-                            </ul>
-                          </div>
-                          <!-- /.action --> 
-                        </div>
-                        <!-- /.cart --> 
-                        
-                      </div>
-                      <!-- /.product-info --> 
-                    </div>
-                    <!-- /.col --> 
-                  </div>
-                  <!-- /.product-list-row -->
-                  <div class="tag sale"><span>sale</span></div>
-                </div>
-                <!-- /.product-list --> 
-              </div>
-              <!-- /.products --> 
-            </div>
-            <!-- /.category-product-inner -->
-            
-            <div class="category-product-inner wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
-              <div class="products">
-                <div class="product-list product">
-                  <div class="row product-list-row">
-                    <div class="col col-sm-4 col-lg-4">
-                      <div class="product-image">
-                        <div class="image"> <img src="{{ asset('frontend\assets\images\products\p14.jpg') }}" alt=""> </div>
-                      </div>
-                      <!-- /.product-image --> 
-                    </div>
-                    <!-- /.col -->
-                    <div class="col col-sm-8 col-lg-8">
-                      <div class="product-info">
-                        <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-                        <div class="rating rateit-small rateit"><button id="rateit-reset-25" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-25" style="display: none;"></button><div id="rateit-range-25" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-25" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;"><div class="rateit-selected" style="height: 14px; width: 56px;"></div><div class="rateit-hover" style="height:14px"></div></div></div>
-                        <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
-                        <!-- /.product-price -->
-                        <div class="description m-t-10">Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget, lacinia id purus. Suspendisse posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum gravida eget.</div>
-                        <div class="cart clearfix animate-effect">
-                          <div class="action">
-                            <ul class="list-unstyled">
-                              <li class="add-cart-button btn-group">
-                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                              </li>
-                              <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                              <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
-                            </ul>
-                          </div>
-                          <!-- /.action --> 
-                        </div>
-                        <!-- /.cart --> 
-                        
-                      </div>
-                      <!-- /.product-info --> 
-                    </div>
-                    <!-- /.col --> 
-                  </div>
-                  <!-- /.product-list-row -->
-                  <div class="tag hot"><span>hot</span></div>
-                </div>
-                <!-- /.product-list --> 
-              </div>
-              <!-- /.products --> 
-            </div>
-            <!-- /.category-product-inner --> 
-            
+            @endforeach
           </div>
           <!-- /.category-product --> 
         </div>

@@ -110,6 +110,7 @@ class CategoryController extends Controller
         ]);
 
         $category = Category::find( $id );
+        
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
         $category->description = $request->description;
@@ -128,6 +129,7 @@ class CategoryController extends Controller
             Image::make($image)->save($location);
             $category->image = $img;
         }
+
         $category->save();
         return redirect()->route('category.manage');
     }
