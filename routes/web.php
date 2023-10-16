@@ -28,6 +28,15 @@ Route::group( ['prefix' => 'product'], function(){
 Route::get('/login', 'App\Http\Controllers\Frontend\PagesController@login')->name('login');
 Route::get('/registration', 'App\Http\Controllers\Frontend\PagesController@registration')->name('ragistration');
 
+// Carts Controller Routes
+Route::group( ['prefix' => 'cart'], function(){
+    Route::get('/', 'App\Http\Controllers\Frontend\CartController@index')->name('cart.items');
+    Route::post('/store', 'App\Http\Controllers\Frontend\CartController@store')->name('cart.store');
+    Route::post('/update/{id}', 'App\Http\Controllers\Frontend\CartController@update')->name('cart.update');
+    Route::get('/destroy/{id}', 'App\Http\Controllers\Frontend\CartController@destroy')->name('cart.destroy');
+});
+
+
 /*
 |--------------------------------------------------------------------------
 | Backend Admin Routes
