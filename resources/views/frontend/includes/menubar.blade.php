@@ -81,7 +81,6 @@
                     <div class="col-xs-1 action"> 
                       <form action="{{ route('cart.destroy', $item->id ) }} " method="POST">
                         @csrf
-                        
                         <button type="submit"><i class="fa fa-trash"></i></button> 
                       </form>
                     </div>

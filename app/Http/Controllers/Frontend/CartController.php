@@ -21,7 +21,9 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('frontend.pages.cart');
+        $cartItems = Cart::orderBy('id', 'asc')->where('order_id', NULL )->get();
+
+        return view('frontend.pages.cart', compact('cartItems'));
     }
 
 
@@ -72,7 +74,16 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cart = Cart::find($id);
+
+        if( !is_null( $cart ) ){
+            $cart->product_quantity = $request->product_quantity;
+            $cart->save();
+
+            return back();
+        }else{
+            return back();
+        }
     }
 
     /**
