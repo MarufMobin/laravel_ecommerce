@@ -56,6 +56,7 @@ class CartController extends Controller
             }
             $cart->ip_address = $request->ip();
             $cart->product_id = $request->product_id;
+            $cart->product_quantity = $request->product_quantity;
             $cart->save();
         }
 
@@ -82,6 +83,14 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cart = Cart::find( $id );
+
+        if( !is_null( $cart ) ){
+            $cart->delete();
+        }
+        else{
+            return back();
+        }
+        return back();
     }
 }

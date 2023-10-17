@@ -165,6 +165,8 @@
                                                         @csrf
 
                                                             <input type="hidden" name="product_id" value=" {{ $value->id }} ">
+                                                           
+                                                            <input type="hidden" name="product_quantity" value="1">
 
                                                             <button class="btn btn-primary icon" type="submit">
                                                                 <i class="fa fa-shopping-cart"></i>
@@ -265,6 +267,7 @@
                                                         @csrf
 
                                                                 <input type="hidden" name="product_id" value=" {{ $value->id }} ">
+                                                                <input type="hidden" name="product_quantity" value="1">
 
                                                                 <button class="btn btn-primary icon" type="submit">
                                                                     <i class="fa fa-shopping-cart"></i>
@@ -394,6 +397,7 @@
                                         @csrf
 
                                         <input type="hidden" name="product_id" value=" {{ $value->id }} ">
+                                        <input type="hidden" name="product_quantity" value="1">
 
                                         <button class="btn btn-primary icon" type="submit">
                                             <i class="fa fa-shopping-cart"></i>
@@ -882,6 +886,7 @@
                                         @csrf
 
                                         <input type="hidden" name="product_id" value=" {{ $value->id }} ">
+                                        <input type="hidden" name="product_quantity" value="1">
 
                                         <button class="btn btn-primary icon" type="submit">
                                             <i class="fa fa-shopping-cart"></i>

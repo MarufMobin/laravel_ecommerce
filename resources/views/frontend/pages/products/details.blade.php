@@ -239,32 +239,28 @@
                     <!-- /.price-container -->
 
                     <div class="quantity-container info-container">
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <span class="label">Qty :</span>
-                            </div>
+                        <form action="{{ route('cart.store') }}" method="POST">
+                        @csrf
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <span class="label">Qty :</span>
+                                </div>
 
-                            <div class="col-sm-2">
-                                <div class="cart-quantity">
-                                    <div class="quant-input">
-                                        <input type="number" value="1" min="1"/>
+                                <div class="col-sm-2">
+                                    <div class="cart-quantity">
+                                        <div class="quant-input">
+                                            <input type="number" value="1" min="1" name="product_quantity"/>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-sm-7">
-                                
-                                <form action="{{ route('cart.store') }}" method="POST">
-                                    @csrf
-
+                                <div class="col-sm-7">
                                     <input type="hidden" name="product_id" value=" {{ $value->id }} ">
 
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</button>
-
-            
-                                </form>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                         <!-- /.row -->
                     </div>
                     <!-- /.quantity-container -->
