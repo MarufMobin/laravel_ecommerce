@@ -41,8 +41,8 @@
                                             <td colspan="7">
                                                 <div class="shopping-cart-btn">
                                                     <span class="">
-                                                        <a href="#" class="btn btn-upper btn-primary outer-left-xs">Continue Shopping</a>
-                                                        <a href="#" class="btn btn-upper btn-primary pull-right outer-right-xs">Update shopping cart</a>
+                                                        <a href="{{ route('allProducts') }}" class="btn btn-upper btn-primary outer-left-xs">Continue Shopping</a>
+                                                        
                                                     </span>
                                                 </div>
                                                 <!-- /.shopping-cart-btn -->
@@ -221,8 +221,8 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        <div class="cart-sub-total">Subtotal<span class="inner-left-md">$600.00</span></div>
-                                        <div class="cart-grand-total">Grand Total<span class="inner-left-md">$600.00</span></div>
+                                        <div class="cart-sub-total">Subtotal<span class="inner-left-md"> BDT {{ App\Models\Frontend\Cart::totalPrice() }} </span></div>
+                                        <div class="cart-grand-total">Grand Total<span class="inner-left-md">BDT {{ App\Models\Frontend\Cart::totalPrice() }}</span></div>
                                     </th>
                                 </tr>
                             </thead>

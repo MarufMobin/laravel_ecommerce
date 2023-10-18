@@ -60,9 +60,13 @@ class CartController extends Controller
             $cart->product_id = $request->product_id;
             $cart->product_quantity = $request->product_quantity;
             $cart->save();
-        }
 
-        return back();
+            $notification = array(
+                'massage' => 'Item Added Successfully',
+                'alert-type' => 'success'
+            );
+        }
+        return back()->with( $notification );
     }
 
     /**
@@ -79,8 +83,11 @@ class CartController extends Controller
         if( !is_null( $cart ) ){
             $cart->product_quantity = $request->product_quantity;
             $cart->save();
-
-            return back();
+            $notification = array(
+                'massage' => 'Item Update Successfully',
+                'alert-type' => 'warning'
+            );
+            return back()->with( $notification );
         }else{
             return back();
         }
@@ -98,10 +105,14 @@ class CartController extends Controller
 
         if( !is_null( $cart ) ){
             $cart->delete();
+            $notification = array(
+                'massage' => 'Item Delated Successfully',
+                'alert-type' => 'error'
+            );
+            return back()->with( $notification );
         }
         else{
             return back();
         }
-        return back();
     }
 }
