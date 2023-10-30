@@ -3,7 +3,11 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-3 logo-holder"> 
           <!-- ============================================================= LOGO ============================================================= -->
-          <div class="logo"> <a href="{{ route('homepage') }}"> <img src="{{ asset('frontend\assets\images\logo.png') }}" alt="logo"> </a> </div>
+          <div class="logo"> 
+            <a href="{{ route('homepage') }}"> 
+              <img src="{{ asset('frontend\assets\images\logo.png') }}" alt="logo"> 
+            </a> 
+          </div>
           <!-- /.logo --> 
           <!-- ============================================================= LOGO : END ============================================================= --> </div>
         <!-- /.logo-holder -->
@@ -95,7 +99,7 @@
                 <div class="clearfix cart-total">
                   <div class="pull-right"> <span class="text">Sub Total :</span><span class='price'>৳ {{ App\Models\Frontend\Cart::totalPrice() }} BDT</span> </div>
                   <div class="clearfix"></div>
-                  <a href="checkout.html" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
+                  <a href="{{ route('checkout.page') }}" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
                 <!-- /.cart-total--> 
                 
               </li>

@@ -36,6 +36,10 @@ Route::group( ['prefix' => 'cart'], function(){
     Route::post('/destroy/{id}', 'App\Http\Controllers\Frontend\CartController@destroy')->name('cart.destroy');
 });
 
+Route::group(['prefix' => 'checkout'], function(){
+    Route::get('/', 'App\Http\Controllers\Frontend\OrderController@index')->name('checkout.page');
+    Route::post('/store', 'App\Http\Controllers\Frontend\OrderController@store')->name('order.store');
+});
 
 /*
 |--------------------------------------------------------------------------

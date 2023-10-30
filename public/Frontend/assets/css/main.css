@@ -7104,3 +7104,26 @@ header {
   margin-top: 30px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .08);
 }
+
+.checkout-page-body {
+  margin-bottom: 30px;
+}
+
+.body-content .checkout-page-body .checkout-page-body table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+  padding: 15px;
+}
+
+.getway-option {
+  border: 2px solid skyblue;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.hidden {
+  display: none;
+}

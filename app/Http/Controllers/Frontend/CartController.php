@@ -65,8 +65,8 @@ class CartController extends Controller
                 'massage' => 'Item Added Successfully',
                 'alert-type' => 'success'
             );
+            return back()->with($notification);
         }
-        return back()->with( $notification );
     }
 
     /**
