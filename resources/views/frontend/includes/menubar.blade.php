@@ -16,7 +16,7 @@
           <!-- /.contact-row --> 
           <!-- ============================================================= SEARCH AREA ============================================================= -->
           <div class="search-area">
-            <form>
+            <form action="{{ route('search') }}" method="GET">
               <div class="control-group">
                 <ul class="categories-filter animate-dropdown">
                   <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="category.html">Categories <b class="caret"></b></a>
@@ -29,8 +29,10 @@
                     </ul>
                   </li>
                 </ul>
-                <input class="search-field" placeholder="Search here...">
-                <a class="search-button" href="#"></a> </div>
+                <input class="search-field" placeholder="Search here..." name="search">
+                <!-- <a class="search-button" href="#"></a>  -->
+                <button type="submit" class="search-button"></button>
+              </div>
             </form>
           </div>
           <!-- /.search-area --> 

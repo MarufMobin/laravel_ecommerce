@@ -35,7 +35,7 @@ class PagesController extends Controller
      */
     public function products()
     {
-        $products = Product::orderBy('id', 'desc')->paginate(24);
+        $products = Product::orderBy('id', 'desc')->paginate(3);
         return view('frontend.pages.products.products', compact('products'));
     }
     
@@ -82,6 +82,21 @@ class PagesController extends Controller
     }
 
    
+    /**
+     *  Product Search Are here
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $search = $request->search;
+
+        $products = Product::orWhere('title', 'like', '%'.$search.'%')->orWhere('sort_desc', 'like', '%'.$search.'%')->orderBy('id','desc')->paginate(6);
+
+        return view('frontend.pages.products.search', compact('products'));
+
+    }
+    
     /**
      * Show the form for creating a new resource.
      *

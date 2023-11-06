@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'App\Http\Controllers\Frontend\PagesController@index')->name('homepage');
 
+// Search Product Items 
+Route::get('/search', 'App\Http\Controllers\Frontend\PagesController@search')->name('search');
+
+
 Route::group( ['prefix' => 'product'], function(){
     Route::get('/', 'App\Http\Controllers\Frontend\PagesController@products')->name('allProducts');
     Route::get('/{slug}', 'App\Http\Controllers\Frontend\PagesController@productshow')->name('product.show');
@@ -40,6 +44,8 @@ Route::group(['prefix' => 'checkout'], function(){
     Route::get('/', 'App\Http\Controllers\Frontend\OrderController@index')->name('checkout.page');
     Route::post('/store', 'App\Http\Controllers\Frontend\OrderController@store')->name('order.store');
 });
+
+
 
 /*
 |--------------------------------------------------------------------------

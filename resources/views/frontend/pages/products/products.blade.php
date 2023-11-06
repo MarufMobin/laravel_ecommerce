@@ -200,6 +200,9 @@
                 
             </div>
             <!-- /.row --> 
+            
+            {{ $products->links() }}
+
           </div>
           <!-- /.category-product --> 
           
@@ -300,12 +303,14 @@
             @endforeach
           </div>
           <!-- /.category-product --> 
+          {{ $products->links() }}
         </div>
         <!-- List-container end here --> 
 
       </div>
       <!-- /.tab-content -->
-      <div class="clearfix filters-container">
+
+      <!-- <div class="clearfix filters-container">
         <div class="text-right">
           <div class="pagination-container">
             <ul class="list-inline list-unstyled">
@@ -316,12 +321,10 @@
               <li><a href="#">4</a></li>
               <li class="next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
             </ul>
-            <!-- /.list-inline --> 
           </div>
-          <!-- /.pagination-container --> </div>
-        <!-- /.text-right --> 
-        
-      </div>
+        </div>        
+      </div> -->
+
       <!-- /.filters-container --> 
       
     </div>        
