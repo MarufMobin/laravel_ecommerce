@@ -60,6 +60,23 @@
               <a href="{{ route('product.manage') }}" class="sub-link @if( Route::currentRouteNamed('product.manage')  ) active @endif">Manage all Products</a></li>
           </ul>
         </li>
+        
+        <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Order Management</label>
+
+        <!-- Order Menu are here -->
+        <li class="br-menu-item">
+          <a href="#" class="br-menu-link with-sub @if( Route::currentRouteNamed('order.manage') || Route::currentRouteNamed('order.edit') ) active @endif ">
+            <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+            <span class="menu-item-label">
+              All Orders
+            </span>
+          </a><!-- br-menu-link -->
+          <ul class="br-menu-sub">
+            <li class="sub-item">
+              <a href="{{ route('order.manage') }}" class="sub-link @if( Route::currentRouteNamed('order.manage')  ) active @endif">Manage all Orders</a>
+            </li>
+          </ul>
+        </li>
 
         <label class="sidebar-label pd-x-10 mg-t-25 mg-b-20 tx-info">Location / Area Manager</label>
 

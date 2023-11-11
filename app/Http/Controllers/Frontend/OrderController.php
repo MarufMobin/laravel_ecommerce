@@ -9,8 +9,12 @@ use App\Models\Backend\Brand;
 use App\Models\Frontend\Order;
 use App\Models\Frontend\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\User;
 use Auth;
+// After done by Intervention Image Work
+use Image;
+use File;
 
 class OrderController extends Controller
 {
@@ -107,11 +111,29 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function manage()
     {
-        //
+        $orders = Order::orderBy('id', 'desc')->get();
+        return view('backend.pages.order.manage', compact('orders'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function view($id)
+    {
+        $order = Order::find($id);
+
+        if( !is_null( $order ) ){
+            return view('backend.pages.order.details', compact('order'));
+        }else{
+            return back();
+        }
+    }
+   
     /**
      * Show the form for editing the specified resource.
      *
@@ -141,7 +163,7 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function cancel($id)
     {
         //
     }

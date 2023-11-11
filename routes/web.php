@@ -79,7 +79,20 @@ Route::group(['prefix' => 'admin' ], function(){
    
     Route::get('/dashboard', 'App\Http\Controllers\Backend\PagesController@index')->middleware(['auth', 'verified'])->name('dashboard');
 
-     // Route for Brand
+    // Route for Order Management
+    Route::group(['prefix' => 'order'], function(){
+        Route::get('/manage', 'App\Http\Controllers\Frontend\OrderController@manage')->name('order.manage');
+        
+        Route::get('/view/{id}', 'App\Http\Controllers\Frontend\OrderController@view')->name('order.view');
+        
+        Route::get('/edit/{id}', 'App\Http\Controllers\Frontend\OrderController@edit')->name('order.edit');
+        
+        Route::post('/edit/{id}', 'App\Http\Controllers\Frontend\OrderController@update')->name('order.update');
+        
+        Route::post('/destroy/{id}', 'App\Http\Controllers\Backend\BrandController@cancel')->name('order.cancel');
+    });
+
+    // Route for Brand
      Route::group(['prefix' => 'brand'], function(){
         Route::get('/manage', 'App\Http\Controllers\Backend\BrandController@index')->name('brand.manage');
 
